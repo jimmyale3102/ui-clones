@@ -29,13 +29,11 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
-import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,14 +56,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TikTokProfileCloneTheme {
-                TikTokProfileContent()
+                //TikTokProfileContent()
+                InstagramProfile()
             }
         }
     }
 }
 
 @Composable
-fun TikTokProfileContent(modifier: Modifier = Modifier) {
+fun TikTokProfileContent() {
     val bottomItems = listOf(
         BottomItem(
             icon = R.drawable.home_ic,
@@ -150,7 +149,7 @@ fun Videos() {
 
 @Composable
 fun VideoView(videoData: VideoItem) {
-    Box() {
+    Box {
         Image(
             painter = painterResource(id = videoData.image),
             contentDescription = null,
@@ -193,19 +192,19 @@ fun Options(modifier: Modifier) {
         Spacer(Modifier.weight(1f))
         TextButton(
             modifier = Modifier.border(1.dp, GrayIcon, RoundedCornerShape(12.dp)),
-            onClick = { /*TODO*/ }
+            onClick = { }
         ) {
             Text("Edit profile", color = Color.Black)
         }
         TextButton(
             modifier = Modifier.border(1.dp, GrayIcon, RoundedCornerShape(12.dp)),
-            onClick = { /*TODO*/ }
+            onClick = { }
         ) {
             Text("Share profile", color = Color.Black)
         }
         TextButton(
             modifier = Modifier.border(1.dp, GrayIcon, RoundedCornerShape(12.dp)),
-            onClick = { /*TODO*/ }
+            onClick = { }
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.add_account_ic),
@@ -333,34 +332,6 @@ data class BottomItem(
     val icon: Int,
     val label: String,
     val isSelected: Boolean
-)
-
-val bottomItems = listOf(
-    BottomItem(
-        icon = R.drawable.home_ic,
-        label = "Home",
-        isSelected = false
-    ),
-    BottomItem(
-        icon = R.drawable.search_ic,
-        label = "Discover",
-        isSelected = false
-    ),
-    BottomItem(
-        icon = R.drawable.add_button_shape,
-        label = "",
-        isSelected = false
-    ),
-    BottomItem(
-        icon = R.drawable.message_ic,
-        label = "Inbox",
-        isSelected = false
-    ),
-    BottomItem(
-        icon = R.drawable.account_ic,
-        label = "Me",
-        isSelected = true
-    ),
 )
 
 data class VideoItem(
